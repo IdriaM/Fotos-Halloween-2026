@@ -1,282 +1,532 @@
 <!DOCTYPE html>
 <html lang="ca">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Rialles sense pietat · Halloween 2026</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    html, body {
-      margin: 0;
-      min-height: 100%;
-      font-family: Georgia, "Times New Roman", serif;
-      background: #080604;
-      color: #f5dfb1;
-    }
-
-    body {
-      min-height: 100vh;
-
-      background-image:
-        linear-gradient(
-          rgba(0,0,0,0.12),
-          rgba(0,0,0,0.30)
-        ),
-        url("fondo.png");
-
-      background-size: cover;
-      background-position: center top;
-      background-attachment: fixed;
-    }
-
-    .pagina {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 32px 18px 25px;
-    }
-
-    .cabecera {
-      text-align: center;
-      max-width: 650px;
-      margin-bottom: 25px;
-    }
-
-    .cabecera h1 {
-      margin: 0;
-
-      font-size: clamp(34px, 8vw, 64px);
-      line-height: 0.95;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-      color: #e7ad49;
+<title>Rialles sense pietat · Sant Pau de Segúries</title>
 
-      text-transform: uppercase;
-      letter-spacing: 2px;
-
-      text-shadow:
-        0 3px 3px #000,
-        0 0 18px rgba(0,0,0,.9);
-    }
+<style>
 
-    .cabecera .subtitulo {
-      margin-top: 12px;
-      font-size: 17px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #f1d59a;
-      text-shadow: 0 2px 5px #000;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    .tarjeta {
-      width: min(92vw, 520px);
+html, body {
+  margin: 0;
+  min-height: 100%;
+}
 
-      background:
-        linear-gradient(
-          rgba(15,10,7,.91),
-          rgba(8,5,3,.95)
-        );
+body {
+  background-color: #080503;
 
-      border: 1px solid #a66a28;
-      border-radius: 12px;
+  background-image:
+    linear-gradient(rgba(0,0,0,.05), rgba(0,0,0,.18)),
+    url("fondo.png");
 
-      padding: 28px 24px;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 
-      text-align: center;
+  color: #f5dfb1;
+  font-family: Georgia, "Times New Roman", serif;
+}
 
-      box-shadow:
-        0 15px 45px rgba(0,0,0,.65),
-        inset 0 0 30px rgba(126,72,23,.12);
-    }
 
-    .tarjeta h2 {
-      margin: 0 0 10px;
+/* CONTENEDOR GENERAL */
 
-      color: #e5b45c;
+.pagina {
+  width: 100%;
+  min-height: 100vh;
 
-      font-size: 24px;
-      font-weight: normal;
-    }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-    .instruccion {
-      margin: 0 auto 22px;
-      max-width: 400px;
-      line-height: 1.5;
-      color: #e7d6b7;
-      font-size: 15px;
-    }
+  padding: 32px 18px 25px;
+}
 
-    #codigo {
-      width: 100%;
-      padding: 15px;
 
-      background: rgba(255,245,220,.95);
+/* CABECERA */
 
-      border: 2px solid #b4772e;
-      border-radius: 7px;
+.cabecera {
+  width: 100%;
+  max-width: 650px;
 
-      color: #25170d;
+  text-align: center;
 
-      text-align: center;
+  margin-bottom: 20px;
+}
 
-      font-family: Arial, sans-serif;
-      font-size: 22px;
-      font-weight: bold;
+.cabecera h1 {
+  margin: 0;
 
-      letter-spacing: 5px;
-      text-transform: uppercase;
+  color: #e4aa49;
 
-      outline: none;
-    }
+  font-size: clamp(38px, 6vw, 68px);
+  line-height: .92;
 
-    #codigo:focus {
-      border-color: #e3b35a;
-      box-shadow: 0 0 12px rgba(224,157,55,.55);
-    }
+  text-transform: uppercase;
+  letter-spacing: 2px;
 
-    button,
-    .descargar {
-      width: 100%;
-      display: block;
+  text-shadow:
+    0 3px 4px #000,
+    0 0 18px #000;
+}
 
-      margin-top: 14px;
-      padding: 15px 18px;
+.lugar {
+  margin-top: 13px;
 
-      border: 1px solid #e0a247;
-      border-radius: 7px;
+  color: #f2d491;
 
-      background:
-        linear-gradient(#a52b18, #67170e);
+  font-size: 15px;
+  font-weight: bold;
 
-      color: #ffe5a7;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 
-      font-family: Georgia, serif;
-      font-size: 15px;
-      font-weight: bold;
+  text-shadow:
+    0 2px 5px #000,
+    0 0 10px #000;
+}
 
-      letter-spacing: 1.5px;
 
-      text-decoration: none;
-      text-transform: uppercase;
+/* TARJETA CENTRAL */
 
-      cursor: pointer;
+.tarjeta {
+  width: min(92vw, 520px);
 
-      box-shadow:
-        0 4px 10px rgba(0,0,0,.45);
-    }
+  padding: 27px 24px;
 
-    button:hover,
-    .descargar:hover {
-      background:
-        linear-gradient(#bd3921, #7d1c11);
-    }
+  text-align: center;
 
-    #mensaje {
-      min-height: 24px;
-      margin-top: 15px;
+  background: rgba(8,5,3,.91);
 
-      color: #e4ad62;
+  border: 1px solid #a56c2a;
+  border-radius: 12px;
 
-      font-size: 14px;
-      line-height: 1.4;
-    }
+  box-shadow:
+    0 15px 40px rgba(0,0,0,.75),
+    inset 0 0 30px rgba(145,83,24,.10);
+}
 
-    #resultado {
-      display: none;
-      margin-top: 22px;
-    }
+.tarjeta h2 {
+  margin: 0 0 10px;
 
-    #foto {
-      display: block;
-      width: 100%;
-      height: auto;
+  color: #e5b45c;
 
-      border: 3px solid #a46d32;
-      border-radius: 5px;
+  font-size: 25px;
+  font-weight: normal;
+}
 
-      box-shadow:
-        0 7px 25px rgba(0,0,0,.65);
-    }
+.instruccion {
+  max-width: 410px;
 
-    .nota {
-      margin: 15px 0 0;
-      color: #c9b48e;
-      font-size: 12px;
-      line-height: 1.4;
-    }
+  margin: 0 auto 22px;
 
-    footer {
-      margin-top: auto;
-      padding-top: 45px;
+  color: #ead8b8;
 
-      text-align: center;
-    }
+  font-size: 15px;
+  line-height: 1.5;
+}
 
-    .logo {
-      display: block;
 
-      width: 145px;
-      max-width: 40vw;
+/* CAMPO CÓDIGO */
 
-      margin: 0 auto 8px;
+#codigo {
+  width: 100%;
 
-      filter:
-        drop-shadow(0 3px 6px rgba(0,0,0,.9));
-    }
+  padding: 15px;
 
-    .instagram {
-      display: inline-block;
+  border: 2px solid #b4772e;
+  border-radius: 7px;
 
-      color: #efca7c;
-      text-decoration: none;
+  background: rgba(255,247,225,.96);
 
-      font-family: Arial, sans-serif;
-      font-size: 14px;
+  color: #25170d;
 
-      text-shadow: 0 2px 4px #000;
-    }
+  font-family: Arial, sans-serif;
+  font-size: 21px;
+  font-weight: bold;
 
-    .instagram:hover {
-      text-decoration: underline;
-    }
+  text-align: center;
+  text-transform: uppercase;
 
-    .credito {
-      margin-top: 7px;
+  letter-spacing: 5px;
 
-      color: #aa9877;
-      font-size: 11px;
-    }
+  outline: none;
+}
 
-    @media (max-width: 600px) {
+#codigo:focus {
+  border-color: #e2ad51;
 
-      body {
-        background-attachment: scroll;
-        background-position: center top;
-      }
+  box-shadow:
+    0 0 12px rgba(224,157,55,.55);
+}
 
-      .pagina {
-        padding-top: 24px;
-      }
 
-      .cabecera {
-        margin-bottom: 18px;
-      }
+/* BOTONES */
 
-      .tarjeta {
-        padding: 23px 18px;
-      }
+button,
+.descargar {
+  display: block;
 
-      footer {
-        padding-top: 35px;
-      }
-    }
+  width: 100%;
 
-  </style>
+  margin-top: 14px;
+  padding: 15px;
+
+  border: 1px solid #df9f42;
+  border-radius: 7px;
+
+  background:
+    linear-gradient(#a6301b, #68170e);
+
+  color: #ffe3a0;
+
+  font-family: Georgia, serif;
+  font-size: 15px;
+  font-weight: bold;
+
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+button:hover,
+.descargar:hover {
+  background:
+    linear-gradient(#bd3921, #7b1b10);
+}
+
+
+/* RESULTADO */
+
+#mensaje {
+  min-height: 22px;
+
+  margin-top: 14px;
+
+  color: #e6ad60;
+
+  font-size: 14px;
+}
+
+#resultado {
+  display: none;
+
+  margin-top: 20px;
+}
+
+#foto {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  border: 3px solid #a46d32;
+  border-radius: 5px;
+
+  box-shadow:
+    0 7px 25px rgba(0,0,0,.7);
+}
+
+.nota {
+  margin: 13px 0 0;
+
+  color: #c7b28e;
+
+  font-size: 12px;
+}
+
+
+/* PIE */
+
+footer {
+  width: min(92vw, 520px);
+
+  margin-top: 30px;
+
+  padding: 18px 20px;
+
+  text-align: center;
+
+  background: rgba(5,3,2,.76);
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 8px 25px rgba(0,0,0,.45);
+}
+
+.bloque-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 32px;
+}
+
+.organizacion,
+.fotografia {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.etiqueta {
+  margin-bottom: 8px;
+
+  color: #d8b979;
+
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+
+/* LOGO FIRA */
+
+.logo-fira {
+  display: block;
+
+  width: 155px;
+  max-width: 100%;
+
+  margin: auto;
+}
+
+
+/* LOGO IDRIA */
+
+.logo-idria {
+  display: block;
+
+  width: 125px;
+  max-width: 100%;
+
+  margin: auto;
+
+  filter:
+    drop-shadow(0 3px 6px rgba(0,0,0,.9));
+}
+
+
+/* INSTAGRAM */
+
+.instagram {
+  display: inline-block;
+
+  margin-top: 8px;
+
+  color: #efca7c;
+
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+
+  text-decoration: none;
+
+  text-shadow:
+    0 2px 4px #000;
+}
+
+.instagram:hover {
+  text-decoration: underline;
+}
+
+
+/* SEPARADOR */
+
+.separador {
+  width: 1px;
+  height: 100px;
+
+  background:
+    linear-gradient(
+      transparent,
+      rgba(208,157,73,.65),
+      transparent
+    );
+}
+
+
+/* ---------------- MÓVIL ---------------- */
+
+@media (max-width: 600px) {
+
+  body {
+    background-attachment: scroll;
+    background-position: center top;
+    background-size: cover;
+  }
+
+
+  .pagina {
+    width: 100%;
+
+    min-height: 100svh;
+
+    padding:
+      20px
+      14px
+      20px;
+
+    align-items: center;
+  }
+
+
+  .cabecera {
+    width: 100%;
+
+    margin:
+      0
+      auto
+      15px;
+
+    text-align: center;
+  }
+
+
+  .cabecera h1 {
+    font-size:
+      clamp(33px, 10.5vw, 47px);
+
+    line-height: .92;
+
+    letter-spacing: 1px;
+  }
+
+
+  .lugar {
+    margin-top: 9px;
+
+    padding: 0 4px;
+
+    font-size: 10px;
+
+    line-height: 1.4;
+
+    letter-spacing: 1.2px;
+  }
+
+
+  .tarjeta {
+    width: 100%;
+    max-width: 390px;
+
+    margin:
+      0
+      auto;
+
+    padding:
+      21px
+      17px;
+  }
+
+
+  .tarjeta h2 {
+    font-size: 21px;
+  }
+
+
+  .instruccion {
+    margin-bottom: 18px;
+
+    font-size: 14px;
+  }
+
+
+  #codigo {
+    padding:
+      14px
+      10px;
+
+    font-size: 19px;
+  }
+
+
+  button,
+  .descargar {
+    padding:
+      14px
+      10px;
+
+    font-size: 13px;
+  }
+
+
+  /* PIE MÓVIL */
+
+  footer {
+    width: 100%;
+    max-width: 390px;
+
+    margin-top: 22px;
+
+    padding:
+      17px
+      10px;
+  }
+
+
+  .bloque-footer {
+    gap: 10px;
+
+    align-items: center;
+  }
+
+
+  .organizacion,
+  .fotografia {
+    min-width: 0;
+  }
+
+
+  .separador {
+    height: 90px;
+  }
+
+
+  .logo-fira {
+    width: 125px;
+  }
+
+
+  .logo-idria {
+    width: 105px;
+  }
+
+
+  .etiqueta {
+    margin-bottom: 6px;
+
+    font-size: 9px;
+
+    letter-spacing: 1.4px;
+  }
+
+
+  .instagram {
+    margin-top: 6px;
+
+    font-size: 9px;
+
+    overflow-wrap: anywhere;
+  }
+
+}
+
+</style>
 </head>
 
 
@@ -284,115 +534,194 @@
 
 <div class="pagina">
 
-  <header class="cabecera">
 
-    <h1>Rialles<br>sense pietat</h1>
+<header class="cabecera">
 
-    <div class="subtitulo">
-      Halloween 2026
-    </div>
+  <h1>
+    Rialles<br>
+    sense pietat
+  </h1>
 
-  </header>
+  <div class="lugar">
+    Sant Pau de Segúries · Halloween 2026
+  </div>
 
-
-  <main class="tarjeta">
-
-    <h2>La teva fotografia t'espera...</h2>
-
-    <p class="instruccion">
-      Introdueix el codi que trobaràs al teu tiquet
-      per veure i descarregar la fotografia.
-    </p>
+</header>
 
 
-    <input
-      id="codigo"
-      type="text"
-      maxlength="12"
-      autocomplete="off"
-      placeholder="CODI"
-    >
+
+<main class="tarjeta">
+
+  <h2>
+    La teva fotografia t'espera...
+  </h2>
 
 
-    <button id="buscar">
-      Veure la meva foto
-    </button>
+  <p class="instruccion">
+    Introdueix el codi que trobaràs al teu tiquet
+    per veure i descarregar la fotografia.
+  </p>
 
 
-    <div id="mensaje"></div>
+  <input
+    id="codigo"
+    type="text"
+    maxlength="12"
+    autocomplete="off"
+    placeholder="CODI"
+  >
 
 
-    <div id="resultado">
-
-      <img
-        id="foto"
-        alt="Fotografia Halloween 2026"
-      >
-
-      <a
-        id="descargar"
-        class="descargar"
-        href="#"
-      >
-        Descarregar fotografia
-      </a>
-
-      <p class="nota">
-        L'enllaç de la fotografia és temporal i privat.
-      </p>
-
-    </div>
-
-  </main>
+  <button id="buscar">
+    Veure la meva foto
+  </button>
 
 
-  <footer>
+  <div id="mensaje"></div>
+
+
+  <div id="resultado">
 
     <img
-      src="logo.png"
-      class="logo"
-      alt="Idria Foto"
+      id="foto"
+      alt="Fotografia Rialles sense pietat"
     >
+
 
     <a
-      class="instagram"
-      href="https://www.instagram.com/idriafoto/"
-      target="_blank"
-      rel="noopener noreferrer"
+      id="descargar"
+      class="descargar"
+      href="#"
     >
-      Instagram · @idriafoto
+      Descarregar fotografia
     </a>
 
-    <div class="credito">
-      Fotografia · Idria Foto
+
+    <p class="nota">
+      L'enllaç de la fotografia és temporal i privat.
+    </p>
+
+  </div>
+
+</main>
+
+
+
+<footer>
+
+  <div class="bloque-footer">
+
+
+    <!-- ORGANIZACIÓN -->
+
+    <div class="organizacion">
+
+      <div class="etiqueta">
+        Organitza
+      </div>
+
+
+      <img
+        src="logo-fira.png"
+        class="logo-fira"
+        alt="Fira de Bruixeria"
+      >
+
+
+      <a
+        class="instagram"
+        href="https://www.instagram.com/firabruixeria.santpau/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Instagram · @firabruixeria.santpau
+      </a>
+
     </div>
 
-  </footer>
+
+
+    <div class="separador"></div>
+
+
+
+    <!-- FOTOGRAFÍA -->
+
+    <div class="fotografia">
+
+      <div class="etiqueta">
+        Fotografia
+      </div>
+
+
+      <img
+        src="logo.png"
+        class="logo-idria"
+        alt="Idria Foto"
+      >
+
+
+      <a
+        class="instagram"
+        href="https://www.instagram.com/idriafoto/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Instagram · @idriafoto
+      </a>
+
+    </div>
+
+
+  </div>
+
+</footer>
+
 
 </div>
+
 
 
 <script>
 
 const FUNCION =
-  "https://hssolvswalrmocnmaxhj.supabase.co/functions/v1/buscar-foto";
+"https://hssolvswalrmocnmaxhj.supabase.co/functions/v1/buscar-foto";
 
 
-const boton = document.getElementById("buscar");
-const campoCodigo = document.getElementById("codigo");
-const mensaje = document.getElementById("mensaje");
-const resultado = document.getElementById("resultado");
-const foto = document.getElementById("foto");
-const botonDescarga = document.getElementById("descargar");
+const boton =
+document.getElementById("buscar");
+
+const campoCodigo =
+document.getElementById("codigo");
+
+const mensaje =
+document.getElementById("mensaje");
+
+const resultado =
+document.getElementById("resultado");
+
+const foto =
+document.getElementById("foto");
+
+const botonDescarga =
+document.getElementById("descargar");
+
 
 
 async function buscarFoto() {
 
-  const codigo =
-    campoCodigo.value.trim().toUpperCase();
 
-  resultado.style.display = "none";
-  mensaje.textContent = "";
+  const codigo =
+    campoCodigo.value
+    .trim()
+    .toUpperCase();
+
+
+  resultado.style.display =
+    "none";
+
+  mensaje.textContent =
+    "";
 
 
   if (!codigo) {
@@ -401,54 +730,85 @@ async function buscarFoto() {
       "Introdueix el codi del teu tiquet.";
 
     return;
+
   }
 
 
-  boton.disabled = true;
-  boton.textContent = "Buscant...";
+  boton.disabled =
+    true;
+
+  boton.textContent =
+    "Buscant...";
 
 
   try {
 
-    const respuesta = await fetch(FUNCION, {
 
-      method: "POST",
+    const respuesta =
+      await fetch(
+        FUNCION,
+        {
 
-      headers: {
-        "Content-Type": "application/json"
-      },
+          method: "POST",
 
-      body: JSON.stringify({
-        codigo: codigo
-      })
+          headers: {
 
-    });
+            "Content-Type":
+              "application/json"
+
+          },
+
+          body:
+            JSON.stringify({
+
+              codigo: codigo
+
+            })
+
+        }
+      );
 
 
-    const datos = await respuesta.json();
+    const datos =
+      await respuesta.json();
 
 
-    if (!respuesta.ok || !datos.url) {
+
+    if (
+      !respuesta.ok ||
+      !datos.url
+    ) {
+
 
       mensaje.textContent =
         "Codi incorrecte. Comprova que l'has escrit bé.";
 
+
       return;
+
     }
 
 
-    foto.src = datos.url;
 
-    resultado.style.display = "block";
+    foto.src =
+      datos.url;
+
+
+    resultado.style.display =
+      "block";
+
 
     mensaje.textContent =
       "Fotografia trobada!";
 
 
+
     botonDescarga.onclick =
       async function(e) {
 
+
         e.preventDefault();
+
 
         botonDescarga.textContent =
           "Preparant descàrrega...";
@@ -456,72 +816,107 @@ async function buscarFoto() {
 
         try {
 
+
           const respuestaFoto =
-            await fetch(datos.url);
+            await fetch(
+              datos.url
+            );
+
 
           const blob =
             await respuestaFoto.blob();
 
+
           const urlTemporal =
-            URL.createObjectURL(blob);
+            URL.createObjectURL(
+              blob
+            );
+
 
           const enlace =
-            document.createElement("a");
+            document.createElement(
+              "a"
+            );
+
 
           enlace.href =
             urlTemporal;
 
+
           enlace.download =
             codigo + ".jpg";
 
-          document.body.appendChild(enlace);
+
+          document.body.appendChild(
+            enlace
+          );
+
 
           enlace.click();
 
+
           enlace.remove();
+
 
           URL.revokeObjectURL(
             urlTemporal
           );
 
+
         }
 
+
         catch (error) {
+
 
           mensaje.textContent =
             "No s'ha pogut descarregar la fotografia.";
 
+
         }
 
+
         finally {
+
 
           botonDescarga.textContent =
             "Descarregar fotografia";
 
+
         }
+
 
       };
 
 
   }
 
+
   catch (error) {
+
 
     mensaje.textContent =
       "Hi ha hagut un problema de connexió. Torna-ho a provar.";
 
+
   }
+
 
   finally {
 
-    boton.disabled = false;
+
+    boton.disabled =
+      false;
+
 
     boton.textContent =
       "Veure la meva foto";
 
+
   }
 
 }
+
 
 
 boton.addEventListener(
@@ -530,18 +925,24 @@ boton.addEventListener(
 );
 
 
+
 campoCodigo.addEventListener(
   "keydown",
   function(e) {
 
+
     if (e.key === "Enter") {
+
       buscarFoto();
+
     }
+
 
   }
 );
 
 </script>
+
 
 </body>
 </html>
