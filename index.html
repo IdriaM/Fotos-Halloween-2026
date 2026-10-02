@@ -264,21 +264,19 @@ footer {
 }
 
 .bloque-footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  gap: 32px;
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  align-items: start;
+  gap: 20px;
 }
 
 .organizacion,
 .fotografia {
-  flex: 1;
-
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 24px 120px 35px;
   align-items: center;
-  justify-content: center;
+  justify-items: center;
+  min-width: 0;
 }
 
 .etiqueta {
@@ -487,9 +485,13 @@ footer {
 
 
   .organizacion,
-  .fotografia {
-    min-width: 0;
-  }
+.fotografia {
+  display: grid;
+  grid-template-rows: 24px 105px 38px;
+  align-items: center;
+  justify-items: center;
+  min-width: 0;
+}
 
 
   .separador {
