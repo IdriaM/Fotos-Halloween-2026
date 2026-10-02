@@ -1,193 +1,547 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="ca">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fotos Halloween 2026</title>
+
+  <title>Rialles sense pietat · Halloween 2026</title>
 
   <style>
     * {
       box-sizing: border-box;
     }
 
-    body {
+    html, body {
       margin: 0;
+      min-height: 100%;
+      font-family: Georgia, "Times New Roman", serif;
+      background: #080604;
+      color: #f5dfb1;
+    }
+
+    body {
+      min-height: 100vh;
+
+      background-image:
+        linear-gradient(
+          rgba(0,0,0,0.12),
+          rgba(0,0,0,0.30)
+        ),
+        url("fondo.png");
+
+      background-size: cover;
+      background-position: center top;
+      background-attachment: fixed;
+    }
+
+    .pagina {
       min-height: 100vh;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      padding: 25px;
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: white;
-      text-align: center;
+      padding: 32px 18px 25px;
     }
 
-    .contenedor {
-      width: 100%;
+    .cabecera {
+      text-align: center;
       max-width: 650px;
+      margin-bottom: 25px;
     }
 
-    h1 {
-      font-size: 2.2rem;
-      margin-bottom: 10px;
-    }
+    .cabecera h1 {
+      margin: 0;
 
-    p {
-      color: #ccc;
-    }
+      font-size: clamp(34px, 8vw, 64px);
+      line-height: 0.95;
 
-    input {
-      width: 100%;
-      max-width: 320px;
-      padding: 16px;
-      margin-top: 20px;
-      border-radius: 8px;
-      border: 1px solid #555;
-      background: #222;
-      color: white;
-      text-align: center;
-      font-size: 1.3rem;
+      color: #e7ad49;
+
       text-transform: uppercase;
+      letter-spacing: 2px;
+
+      text-shadow:
+        0 3px 3px #000,
+        0 0 18px rgba(0,0,0,.9);
     }
 
-    button, .descargar {
-      display: block;
+    .cabecera .subtitulo {
+      margin-top: 12px;
+      font-size: 17px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #f1d59a;
+      text-shadow: 0 2px 5px #000;
+    }
+
+    .tarjeta {
+      width: min(92vw, 520px);
+
+      background:
+        linear-gradient(
+          rgba(15,10,7,.91),
+          rgba(8,5,3,.95)
+        );
+
+      border: 1px solid #a66a28;
+      border-radius: 12px;
+
+      padding: 28px 24px;
+
+      text-align: center;
+
+      box-shadow:
+        0 15px 45px rgba(0,0,0,.65),
+        inset 0 0 30px rgba(126,72,23,.12);
+    }
+
+    .tarjeta h2 {
+      margin: 0 0 10px;
+
+      color: #e5b45c;
+
+      font-size: 24px;
+      font-weight: normal;
+    }
+
+    .instruccion {
+      margin: 0 auto 22px;
+      max-width: 400px;
+      line-height: 1.5;
+      color: #e7d6b7;
+      font-size: 15px;
+    }
+
+    #codigo {
       width: 100%;
-      max-width: 320px;
-      margin: 12px auto;
       padding: 15px;
-      border: 0;
-      border-radius: 8px;
-      background: white;
-      color: #111;
-      font-size: 1rem;
+
+      background: rgba(255,245,220,.95);
+
+      border: 2px solid #b4772e;
+      border-radius: 7px;
+
+      color: #25170d;
+
+      text-align: center;
+
+      font-family: Arial, sans-serif;
+      font-size: 22px;
       font-weight: bold;
-      cursor: pointer;
+
+      letter-spacing: 5px;
+      text-transform: uppercase;
+
+      outline: none;
+    }
+
+    #codigo:focus {
+      border-color: #e3b35a;
+      box-shadow: 0 0 12px rgba(224,157,55,.55);
+    }
+
+    button,
+    .descargar {
+      width: 100%;
+      display: block;
+
+      margin-top: 14px;
+      padding: 15px 18px;
+
+      border: 1px solid #e0a247;
+      border-radius: 7px;
+
+      background:
+        linear-gradient(#a52b18, #67170e);
+
+      color: #ffe5a7;
+
+      font-family: Georgia, serif;
+      font-size: 15px;
+      font-weight: bold;
+
+      letter-spacing: 1.5px;
+
       text-decoration: none;
+      text-transform: uppercase;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 4px 10px rgba(0,0,0,.45);
+    }
+
+    button:hover,
+    .descargar:hover {
+      background:
+        linear-gradient(#bd3921, #7d1c11);
     }
 
     #mensaje {
       min-height: 24px;
       margin-top: 15px;
+
+      color: #e4ad62;
+
+      font-size: 14px;
+      line-height: 1.4;
     }
 
     #resultado {
       display: none;
-      margin-top: 25px;
+      margin-top: 22px;
     }
 
     #foto {
+      display: block;
       width: 100%;
-      max-height: 65vh;
-      object-fit: contain;
-      border-radius: 10px;
+      height: auto;
+
+      border: 3px solid #a46d32;
+      border-radius: 5px;
+
+      box-shadow:
+        0 7px 25px rgba(0,0,0,.65);
     }
+
+    .nota {
+      margin: 15px 0 0;
+      color: #c9b48e;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    footer {
+      margin-top: auto;
+      padding-top: 45px;
+
+      text-align: center;
+    }
+
+    .logo {
+      display: block;
+
+      width: 145px;
+      max-width: 40vw;
+
+      margin: 0 auto 8px;
+
+      filter:
+        drop-shadow(0 3px 6px rgba(0,0,0,.9));
+    }
+
+    .instagram {
+      display: inline-block;
+
+      color: #efca7c;
+      text-decoration: none;
+
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+
+      text-shadow: 0 2px 4px #000;
+    }
+
+    .instagram:hover {
+      text-decoration: underline;
+    }
+
+    .credito {
+      margin-top: 7px;
+
+      color: #aa9877;
+      font-size: 11px;
+    }
+
+    @media (max-width: 600px) {
+
+      body {
+        background-attachment: scroll;
+        background-position: center top;
+      }
+
+      .pagina {
+        padding-top: 24px;
+      }
+
+      .cabecera {
+        margin-bottom: 18px;
+      }
+
+      .tarjeta {
+        padding: 23px 18px;
+      }
+
+      footer {
+        padding-top: 35px;
+      }
+    }
+
   </style>
 </head>
 
+
 <body>
 
-  <main class="contenedor">
+<div class="pagina">
 
-    <h1>Halloween 2026</h1>
+  <header class="cabecera">
 
-    <p>Introduce el código que has recibido para acceder a tu fotografía.</p>
+    <h1>Rialles<br>sense pietat</h1>
+
+    <div class="subtitulo">
+      Halloween 2026
+    </div>
+
+  </header>
+
+
+  <main class="tarjeta">
+
+    <h2>La teva fotografia t'espera...</h2>
+
+    <p class="instruccion">
+      Introdueix el codi que trobaràs al teu tiquet
+      per veure i descarregar la fotografia.
+    </p>
+
 
     <input
       id="codigo"
       type="text"
-      placeholder="TU CÓDIGO"
+      maxlength="12"
       autocomplete="off"
+      placeholder="CODI"
     >
 
-    <button onclick="buscarFoto()">VER MI FOTO</button>
+
+    <button id="buscar">
+      Veure la meva foto
+    </button>
+
 
     <div id="mensaje"></div>
 
+
     <div id="resultado">
-      <img id="foto" alt="Tu fotografía">
-     <a id="descargar" class="descargar" download>
-        DESCARGAR FOTO
+
+      <img
+        id="foto"
+        alt="Fotografia Halloween 2026"
+      >
+
+      <a
+        id="descargar"
+        class="descargar"
+        href="#"
+      >
+        Descarregar fotografia
       </a>
+
+      <p class="nota">
+        L'enllaç de la fotografia és temporal i privat.
+      </p>
+
     </div>
 
   </main>
 
-  <script>
 
-    const FUNCION =
-      "https://hssolvswalrmocnmaxhj.supabase.co/functions/v1/buscar-foto";
+  <footer>
 
-    async function buscarFoto() {
+    <img
+      src="logo.png"
+      class="logo"
+      alt="Idria Foto"
+    >
 
-      const codigo =
-        document.getElementById("codigo").value.trim().toUpperCase();
+    <a
+      class="instagram"
+      href="https://www.instagram.com/idriafoto/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Instagram · @idriafoto
+    </a>
 
-      const mensaje = document.getElementById("mensaje");
-      const resultado = document.getElementById("resultado");
+    <div class="credito">
+      Fotografia · Idria Foto
+    </div>
 
-      resultado.style.display = "none";
+  </footer>
 
-      if (!codigo) {
-        mensaje.textContent = "Introduce tu código.";
-        return;
-      }
+</div>
 
-      mensaje.textContent = "Buscando tu fotografía...";
 
-      try {
+<script>
 
-        const respuesta = await fetch(FUNCION, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({ codigo: codigo })
-        });
+const FUNCION =
+  "https://hssolvswalrmocnmaxhj.supabase.co/functions/v1/buscar-foto";
 
-        const datos = await respuesta.json();
 
-        if (!respuesta.ok || !datos.url) {
-          mensaje.textContent =
-            "Código incorrecto. Comprueba que lo has escrito bien.";
-          return;
-        }
+const boton = document.getElementById("buscar");
+const campoCodigo = document.getElementById("codigo");
+const mensaje = document.getElementById("mensaje");
+const resultado = document.getElementById("resultado");
+const foto = document.getElementById("foto");
+const botonDescarga = document.getElementById("descargar");
 
-        document.getElementById("foto").src = datos.url;
-        const botonDescarga = document.getElementById("descargar");
-botonDescarga.href = "#";
 
-botonDescarga.onclick = async function(e) {
-  e.preventDefault();
+async function buscarFoto() {
 
-  const respuestaFoto = await fetch(datos.url);
-  const blob = await respuestaFoto.blob();
+  const codigo =
+    campoCodigo.value.trim().toUpperCase();
 
-  const urlTemporal = URL.createObjectURL(blob);
-  const enlace = document.createElement("a");
+  resultado.style.display = "none";
+  mensaje.textContent = "";
 
-  enlace.href = urlTemporal;
-  enlace.download = "foto-halloween-2026.jpg";
 
-  document.body.appendChild(enlace);
-  enlace.click();
-  enlace.remove();
+  if (!codigo) {
 
-  URL.revokeObjectURL(urlTemporal);
-};
-        mensaje.textContent = "";
-        resultado.style.display = "block";
+    mensaje.textContent =
+      "Introdueix el codi del teu tiquet.";
 
-      } catch (error) {
+    return;
+  }
 
-        mensaje.textContent =
-          "No se ha podido cargar la fotografía. Inténtalo de nuevo.";
 
-      }
+  boton.disabled = true;
+  boton.textContent = "Buscant...";
+
+
+  try {
+
+    const respuesta = await fetch(FUNCION, {
+
+      method: "POST",
+
+      headers: {
+        "Content-Type": "application/json"
+      },
+
+      body: JSON.stringify({
+        codigo: codigo
+      })
+
+    });
+
+
+    const datos = await respuesta.json();
+
+
+    if (!respuesta.ok || !datos.url) {
+
+      mensaje.textContent =
+        "Codi incorrecte. Comprova que l'has escrit bé.";
+
+      return;
     }
 
-  </script>
+
+    foto.src = datos.url;
+
+    resultado.style.display = "block";
+
+    mensaje.textContent =
+      "Fotografia trobada!";
+
+
+    botonDescarga.onclick =
+      async function(e) {
+
+        e.preventDefault();
+
+        botonDescarga.textContent =
+          "Preparant descàrrega...";
+
+
+        try {
+
+          const respuestaFoto =
+            await fetch(datos.url);
+
+          const blob =
+            await respuestaFoto.blob();
+
+          const urlTemporal =
+            URL.createObjectURL(blob);
+
+          const enlace =
+            document.createElement("a");
+
+          enlace.href =
+            urlTemporal;
+
+          enlace.download =
+            codigo + ".jpg";
+
+          document.body.appendChild(enlace);
+
+          enlace.click();
+
+          enlace.remove();
+
+          URL.revokeObjectURL(
+            urlTemporal
+          );
+
+        }
+
+        catch (error) {
+
+          mensaje.textContent =
+            "No s'ha pogut descarregar la fotografia.";
+
+        }
+
+        finally {
+
+          botonDescarga.textContent =
+            "Descarregar fotografia";
+
+        }
+
+      };
+
+
+  }
+
+  catch (error) {
+
+    mensaje.textContent =
+      "Hi ha hagut un problema de connexió. Torna-ho a provar.";
+
+  }
+
+  finally {
+
+    boton.disabled = false;
+
+    boton.textContent =
+      "Veure la meva foto";
+
+  }
+
+}
+
+
+boton.addEventListener(
+  "click",
+  buscarFoto
+);
+
+
+campoCodigo.addEventListener(
+  "keydown",
+  function(e) {
+
+    if (e.key === "Enter") {
+      buscarFoto();
+    }
+
+  }
+);
+
+</script>
 
 </body>
 </html>
