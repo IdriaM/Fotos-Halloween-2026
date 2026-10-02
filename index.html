@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fotos Halloween 2026</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 25px;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: white;
+      text-align: center;
+    }
+
+    .contenedor {
+      width: 100%;
+      max-width: 650px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #ccc;
+    }
+
+    input {
+      width: 100%;
+      max-width: 320px;
+      padding: 16px;
+      margin-top: 20px;
+      border-radius: 8px;
+      border: 1px solid #555;
+      background: #222;
+      color: white;
+      text-align: center;
+      font-size: 1.3rem;
+      text-transform: uppercase;
+    }
+
+    button, .descargar {
+      display: block;
+      width: 100%;
+      max-width: 320px;
+      margin: 12px auto;
+      padding: 15px;
+      border: 0;
+      border-radius: 8px;
+      background: white;
+      color: #111;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    #mensaje {
+      min-height: 24px;
+      margin-top: 15px;
+    }
+
+    #resultado {
+      display: none;
+      margin-top: 25px;
+    }
+
+    #foto {
+      width: 100%;
+      max-height: 65vh;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="contenedor">
+
+    <h1>Halloween 2026</h1>
+
+    <p>Introduce el código que has recibido para acceder a tu fotografía.</p>
+
+    <input
+      id="codigo"
+      type="text"
+      placeholder="TU CÓDIGO"
+      autocomplete="off"
+    >
+
+    <button onclick="buscarFoto()">VER MI FOTO</button>
+
+    <div id="mensaje"></div>
+
+    <div id="resultado">
+      <img id="foto" alt="Tu fotografía">
+      <a id="descargar" class="descargar" target="_blank">
+        DESCARGAR FOTO
+      </a>
+    </div>
+
+  </main>
+
+  <script>
+
+    const FUNCION =
+      "https://hssolvswalrmocnmaxhj.supabase.co/functions/v1/buscar-foto";
+
+    async function buscarFoto() {
+
+      const codigo =
+        document.getElementById("codigo").value.trim().toUpperCase();
+
+      const mensaje = document.getElementById("mensaje");
+      const resultado = document.getElementById("resultado");
+
+      resultado.style.display = "none";
+
+      if (!codigo) {
+        mensaje.textContent = "Introduce tu código.";
+        return;
+      }
+
+      mensaje.textContent = "Buscando tu fotografía...";
+
+      try {
+
+        const respuesta = await fetch(FUNCION, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ codigo: codigo })
+        });
+
+        const datos = await respuesta.json();
+
+        if (!respuesta.ok || !datos.url) {
+          mensaje.textContent =
+            "Código incorrecto. Comprueba que lo has escrito bien.";
+          return;
+        }
+
+        document.getElementById("foto").src = datos.url;
+        document.getElementById("descargar").href = datos.url;
+
+        mensaje.textContent = "";
+        resultado.style.display = "block";
+
+      } catch (error) {
+
+        mensaje.textContent =
+          "No se ha podido cargar la fotografía. Inténtalo de nuevo.";
+
+      }
+    }
+
+  </script>
+
+</body>
+</html>
